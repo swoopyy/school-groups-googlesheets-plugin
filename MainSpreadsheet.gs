@@ -1,6 +1,6 @@
 function onOpen(e) {
     var documentProperties = PropertiesService.getDocumentProperties();
-    documentProperties.deleteAllProperties();
+    // documentProperties.deleteAllProperties();
     if (documentProperties.getProperty("main_spreadsheet")) {
         mainSpreadsheetMenu(false);
     } else if (documentProperties.getProperty("classroom_teachers")) {
@@ -40,7 +40,7 @@ function newlyCreatedDoc() {
     } else {
         var userProperties = PropertiesService.getUserProperties();
         documentProperties.setProperty("main_spreadsheet", "true");
-        userProperties.setProperty("main_spreadsheet", ss.getUrl());
+        userProperties.setProperty("main_spreadsheet", ss.getUrl()); //url for main spreadsheat is stored in userProps
         mainSpreadsheetMenu(true);
     }
 }
@@ -57,14 +57,25 @@ function mainSpreadsheetMenu(newlyCreated) {
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
-        .addItem("Создать таблицу", "createTableMenuItem")
+        .addItem("Создать таблицу", "createSheetMenuItem")
         .addItem("Создать документы", "createDocsForActiveSheet")
+        .addItem("Сформировать подгруппы", "createGroups")
         .addToUi();
 }
 
 
-function createTableMenuItem() {
+function createSheetMenuItem() {
+    var html = HtmlService.createTemplateFromFile('Years.dialog')
+        .evaluate()
+        .setWidth(400)
+        .setHeight(100);
+    SpreadsheetApp.getUi()
+        .showModalDialog(html, 'Введите учебный год');
+}
 
+function createMainSpreadsheetSheet(fromYear, toYear) {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    ss.insertSheet(fromYear + '-' + toYear);
 }
 
 function createDocsForActiveSheet() {
@@ -88,7 +99,7 @@ function openOrCreateDoc(name, sheet) {
     if (!url) {
         var doc = SpreadsheetApp.create(name + "_" + sheet.getName()); // Преподаватели_2018-2019
         url = doc.getUrl();
-        sheet.appendRow([name, url, doc.getId()]);
+        sheet.appendRow([name, url]);
     }
     return SpreadsheetApp.openByUrl(url);
 }

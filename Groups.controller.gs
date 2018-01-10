@@ -3,3 +3,7 @@ function groupsMenu(newlyCreated) {
         // Doc was opened for the very first time
     }
 }
+
+function createGroups() {
+    // main functionality
+}

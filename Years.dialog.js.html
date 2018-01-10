@@ -1,0 +1,25 @@
+<script>
+    function submit() {
+        var fromYear = Number(document.getElementById('fromYear').value);
+        var toYear = Number(document.getElementById('toYear').value);
+        if (!fromYear || !toYear || fromYear < 0 || toYear < 0) {
+            showError("Года должны быть натуральными числами");
+            return;
+        }
+        if (fromYear > toYear) {
+            showError("Год начала не может быть больше года окончания");
+            return;
+        }
+        google.script.run.createMainSpreadsheetSheet(fromYear, toYear);
+        google.script.host.close()
+    }
+
+    function cancel() {
+        google.script.host.close()
+    }
+
+    function showError(message) {
+        document.getElementById('error').innerHTML = 'Ошибка: ' + message;
+    }
+</script>
+
