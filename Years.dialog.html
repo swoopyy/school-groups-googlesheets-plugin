@@ -3,12 +3,12 @@
 <div class="container">
     <p id="error"></p>
     <div class="fields">
-        <label for="fromYear">C1: </label><input type="text" id="fromYear">
+        <label for="fromYear">C: </label><input type="text" id="fromYear">
         <label for="toYear">По: </label><input type="text" id="toYear">
     </div>
     <div class="buttons">
-        <input type="button" value="ОК" onclick="submit()">
-        <input type="button" value="Отмена" onclick="cancel()">
+        <input class="btn btn-primary" type="button" value="ОК" onclick="submit()">
+        <input class="btn btn-primary" type="button" value="Отмена" onclick="cancel()">
     </div>
 </div>
 <?!= include('Years.dialog.js.html'); ?>
