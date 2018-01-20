@@ -68,7 +68,7 @@ function createSheetMenuItem() {
     var html = HtmlService.createTemplateFromFile('Years.dialog')
         .evaluate()
         .setWidth(400)
-        .setHeight(100);
+        .setHeight(300);
     SpreadsheetApp.getUi()
         .showModalDialog(html, 'Введите учебный год');
 }
