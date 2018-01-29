@@ -1,0 +1,45 @@
+<script>
+    function submit() {
+        var name = document.getElementById('teacher-name').value;
+        var email = document.getElementById('teacher-email').value;
+        var discipline = document.getElementById('teacher-discipline').innerHTML;
+        var maxStudents = document.getElementById('teacher-max-students').innerHTML;
+        if (!name) {
+            showError('ФИО отсутствует');
+            return;
+        }
+        if (!email || email.indexOf('.') === -1 || email.indexOf('@') === -1) {
+            showError('Некорректный e-mail');
+            return;
+        }
+        console.log('HEY YAY', discipline, maxStudents);
+        if (discipline.indexOf('Предмет') !== -1) {
+            showError('Предмет не выбран');
+            return;
+        }
+        if (maxStudents.indexOf('Макс. учеников в группе') !== -1) {
+            showError('Макс. кол-во учеников не выбрано');
+            return;
+        }
+        hideError();
+        google.script.run.addTeacher(name, email, discipline, maxStudents);
+    }
+    function selectDiscipline(discipline) {
+        document.getElementById('teacher-discipline').innerHTML = discipline;
+    }
+
+    function selectMaxStudents(maxStudents) {
+        document.getElementById('teacher-max-students').innerHTML = maxStudents;
+    }
+
+    function showError(message) {
+        var element = document.getElementById('error');
+        element.classList.remove('hidden');
+        element.innerHTML = 'Ошибка: ' + message;
+    }
+
+    function hideError() {
+        var element = document.getElementById('error');
+        element.classList.add('hidden');
+    }
+</script>

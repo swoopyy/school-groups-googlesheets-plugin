@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<?!= include('links.html'); ?>
+<?!= include('Teachers.css.html'); ?>
+<div class="container">
+<div class="alert alert-danger hidden" id="error">
+</div>
+<form>
+    <div class="form-group">
+        <input class="form-control" type="text" id="teacher-name" placeholder="ФИО">
+    </div>
+    <div class=form-group>
+        <input class="form-control" type="email" id="teacher-email" placeholder="E-mail">
+    </div>
+    <div class=form-group>
+        <div class="dropdown">
+          <button class="form-control dropdown-toggle" type="input" id="teacher-discipline" data-toggle="dropdown">
+            Предмет
+          </button>
+          <div class="dropdown-menu">
+            <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
+              <a class="dropdown-item" onclick="selectDiscipline(<?= DISCIPLINES_LIST[i] ?>)" href="#">
+                <?= DISCIPLINES_LIST[i] ?>
+              </a>
+            <? } ?>
+         </div>
+       </div>
+    </div>
+    <div class=form-group>
+        <div class="dropdown">
+          <button class="form-control dropdown-toggle" type="input" id="teacher-max-students" data-toggle="dropdown">
+            Макс. учеников в группе
+          </button>
+          <div class="dropdown-menu">
+            <? for (var i = 0; i < MAX_STUDENTS.length; ++i) { ?>
+              <a class="dropdown-item" onclick="selectMaxStudents(<?= MAX_STUDENTS[i] ?>)" href="#">
+                <?= MAX_STUDENTS[i] ?>
+              </a>
+            <? } ?>
+         </div>
+       </div>
+    </div>
+</form>
+<div class="buttons">
+   <input class="btn btn-primary" type="button" value="Добавить" onclick="submit()">
+</div>
+</div>
+<?!= include('Teachers.js.html'); ?>
