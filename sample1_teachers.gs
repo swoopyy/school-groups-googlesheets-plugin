@@ -1,4 +1,4 @@
-[
+var sample1_teachers = [
     {
         "maxGroups": 16,
         "teacherId": 17,
@@ -119,4 +119,4 @@
         "teacherName": "Mrs. Anna Blount",
         "minGroups": 3
     }
-]
+];

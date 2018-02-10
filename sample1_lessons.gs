@@ -1,4 +1,4 @@
-[
+var sample1_lessons = [
     {
         "groupMinPupils": 6,
         "lessonName": "basic informatics",
@@ -353,4 +353,4 @@
             16
         ]
     }
-]
+];

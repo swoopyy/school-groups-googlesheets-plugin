@@ -1,4 +1,4 @@
-[
+var sample1_pupils = [
     {
         "preferences": [
             {
@@ -6519,4 +6519,4 @@
         "gradeName": "2\u0432",
         "major": "general"
     }
-]
+];

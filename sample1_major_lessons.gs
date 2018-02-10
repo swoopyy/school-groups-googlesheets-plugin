@@ -1,4 +1,4 @@
-{
+var sample1_major_lessons = {
     "6\u0431": {
         "general": [
             9,
