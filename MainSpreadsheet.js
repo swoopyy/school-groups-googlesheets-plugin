@@ -50,6 +50,7 @@ function onInstall(e) {
 }
 
 function mainSpreadsheetMenu(newlyCreated) {
+    Logger.log("main spreasdheet");
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     if (newlyCreated) {
         var currentYear = new Date().getFullYear();
@@ -113,4 +114,8 @@ function findRowByName(name, sheet) {
             return values[i];
         }
     }
+}
+
+function getActiveSheetName() {
+  return SpreadsheetApp.getActiveSheet().getName();
 }

@@ -41,4 +41,8 @@ function MainSpreadsheetService() {
     return this.getData(sheetName, "ИУПы");
   }
   
+  this.getIndividualCurriculumsUrl = function(yearRange) {
+    return this.getSpreadsheetUrl(yearRange, "ИУПы");
+  }
+  
 }

@@ -9,7 +9,7 @@
           <button class="form-control dropdown-toggle" type="input" id="classroom-teacher" data-toggle="dropdown">
             Преподаватель
           </button>
-          <? var teachers = getAllTeachers(); ?>
+          <? var teachers = getAllTeachers(getActiveSheetName()); ?>
           <div class="dropdown-menu">
             <? for (var i = 0; i < teachers.length; ++i) { ?>
               <a class="dropdown-item" onclick="selectTeacher(<?= teachers[i] ?>)">

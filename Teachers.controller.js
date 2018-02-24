@@ -4,7 +4,7 @@ function teachersMenu(newlyCreated) {
       if (newlyCreated) {
         var currentYear = new Date().getFullYear();
         var nextYear = currentYear + 1;
-        ss.renameActiveSheet("Преподаватели " + currentYear + "-" + nextYear);
+        ss.renameActiveSheet(currentYear + "-" + nextYear);
       }
     }
     var ui = SpreadsheetApp.getUi();
@@ -27,13 +27,22 @@ function addTeacher(name, email, discipline, maxStudents) {
    sheet.appendRow([name, email, discipline, maxStudents]);
 }
 
-function getAllTeachers(spreadsheet) {
-  var userProperties = PropertiesService.getUserProperties();
+function getAllTeachers(yearRange) {
   var mainspreadsheetService = new MainSpreadsheetService();
-  var data = mainspreadsheetService.getTeachersMatrix("2019-2020");
+  var data = mainspreadsheetService.getTeachersMatrix(yearRange);
   var arr = [];
   for(var i = 0; i < data.length; ++i) {
     arr.push(data[i][0])
   }
   return arr;
+}
+
+function getTeacherEmailFromName(name, yearRange) {
+  var mainspreadsheetService = new MainSpreadsheetService();
+  var data = mainspreadsheetService.getTeachersMatrix(yearRange);
+  for(var i = 0; i < data.length; ++i) {
+    if (data[i][0] === name) {
+      return data[i][1];
+    }
+  }
 }

@@ -1,1 +1,0 @@
-# school-groups-googlesheets-plugin
