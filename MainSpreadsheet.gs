@@ -77,7 +77,9 @@ function createMainSpreadsheetSheet(fromYear, toYear) {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     ss.insertSheet(fromYear + '-' + toYear);
 }
-
+function createGroups() {
+  groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers);
+}
 function createDocsForActiveSheet() {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getActiveSheet();
