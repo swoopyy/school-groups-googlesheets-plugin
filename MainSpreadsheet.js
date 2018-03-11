@@ -50,6 +50,7 @@ function onInstall(e) {
 }
 
 function mainSpreadsheetMenu(newlyCreated) {
+    Logger.log("main spreasdheet");
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     if (newlyCreated) {
         var currentYear = new Date().getFullYear();
@@ -67,8 +68,8 @@ function mainSpreadsheetMenu(newlyCreated) {
 function createSheetMenuItem() {
     var html = HtmlService.createTemplateFromFile('Years.dialog')
         .evaluate()
-        .setWidth(400)
-        .setHeight(100);
+        .setWidth(500)
+        .setHeight(300);
     SpreadsheetApp.getUi()
         .showModalDialog(html, 'Введите учебный год');
 }
@@ -111,8 +112,12 @@ function findRowByName(name, sheet) {
     var values = range.getValues();
 
     for (var i = 0; i < values.length; i++) {
-        if (values[i][0]  === name) {
+        if (values[i][0] === name) {
             return values[i];
         }
     }
+}
+
+function getActiveSheetName() {
+  return SpreadsheetApp.getActiveSheet().getName();
 }

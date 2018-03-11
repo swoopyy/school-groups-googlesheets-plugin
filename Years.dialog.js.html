@@ -10,16 +10,20 @@
             showError("Год начала не может быть больше года окончания");
             return;
         }
+        hideError();
         google.script.run.createMainSpreadsheetSheet(fromYear, toYear);
         google.script.host.close()
     }
 
-    function cancel() {
-        google.script.host.close()
-    }
-
     function showError(message) {
-        document.getElementById('error').innerHTML = 'Ошибка: ' + message;
+        var element = document.getElementById('error');
+        element.classList.remove('hidden');
+        element.innerHTML = 'Ошибка: ' + message;
+    }
+    
+    function hideError() {
+        var element = document.getElementById('error');
+        element.classList.add('hidden');
     }
 </script>
 

@@ -1,14 +1,18 @@
 <?!= include('links.html'); ?>
 <?!= include('Years.dialog.css.html'); ?>
-<div class="container">
-    <p id="error"></p>
-    <div class="fields">
-        <label for="fromYear">C: </label><input type="text" id="fromYear">
-        <label for="toYear">По: </label><input type="text" id="toYear">
+<div class="alert alert-danger hidden" id="error">
+</div>
+<form>
+    <div class="form-group">
+        <label for="fromYear">C: </label>
+        <input class="form-control" type="text" id="fromYear">
     </div>
-    <div class="buttons">
-        <input class="btn btn-primary" type="button" value="ОК" onclick="submit()">
-        <input class="btn btn-primary" type="button" value="Отмена" onclick="cancel()">
+    <div class=form-group>
+        <label for="toYear">По: </label>
+        <input class="form-control" type="text" id="toYear">
     </div>
+</form>
+<div class="buttons">
+   <input class="btn btn-primary" type="button" value="ОК" onclick="submit()">
 </div>
 <?!= include('Years.dialog.js.html'); ?>
