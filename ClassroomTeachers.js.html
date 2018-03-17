@@ -1,23 +1,23 @@
 <script>
-  function submit() {
-     var teacher = document.getElementById('classroom-teacher').innerHTML;
-     var letter = document.getElementById('classroom-letter').innerHTML;
-     var number = document.getElementById('classroom-number').innerHTML;
-     if (teacher.indexOf('Преподаватель') !== -1) {
-        showError('Выберите преподавателя');
-        return
-     }
-     if (number.indexOf('Номер класса') !== -1) {
-        showError('Выберите номер класса');
-        return
-     }
-      if (letter.indexOf('Буква класса') !== -1) {
-        showError('Выберите букву класса');
-        return
-     }
-     hideError();
-     google.script.run.addClassroomTeacher(teacher, letter, number);
-  }
+    function submit() {
+        var teacher = document.getElementById('classroom-teacher').innerHTML;
+        var letter = document.getElementById('classroom-letter').innerHTML;
+        var number = document.getElementById('classroom-number').innerHTML;
+        if (teacher.indexOf('Преподаватель') !== -1) {
+            showError('Выберите преподавателя');
+            return
+        }
+        if (number.indexOf('Номер класса') !== -1) {
+            showError('Выберите номер класса');
+            return
+        }
+        if (letter.indexOf('Буква класса') !== -1) {
+            showError('Выберите букву класса');
+            return
+        }
+        hideError();
+        google.script.run.addClassroomTeacher(teacher, letter, number);
+    }
 </script>
 
 

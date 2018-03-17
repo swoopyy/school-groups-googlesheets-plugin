@@ -7,22 +7,22 @@
             showError('Физкультура отсутствует');
             return;
         }
-       
+
         if (!curriculum || curriculum === 'Учебный план') {
-           showError('Учебный отсутствует');
-           return;
+            showError('Учебный отсутствует');
+            return;
         }
-        
+
         if (!name) {
-           showError('Имя отстутсвует');
-           return;
+            showError('Имя отстутсвует');
+            return;
         }
-        
+
         google.script.run.addICurriculum();
         hideError();
     }
-    
+
     function selectCurriculum(curriculum) {
-       select('icurriculums-curriculum', curriculum);
+        select('icurriculums-curriculum', curriculum);
     }
 </script>

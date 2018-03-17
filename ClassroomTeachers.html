@@ -2,56 +2,56 @@
 <?!= include('shared.css.html'); ?>
 <?!= include('ClassroomTeachers.css.html'); ?>
 <div class="container">
-<div class="alert alert-danger hidden" id="error">
-</div>
-<form>
-    <div class=form-group>
-        <div class="dropdown">
-          <button class="form-control dropdown-toggle" type="input" id="classroom-teacher" data-toggle="dropdown">
-            Преподаватель
-          </button>
-          <? var teachers = getAllTeachers(getActiveSheetName()); ?>
-          <div class="dropdown-menu">
-            <? for (var i = 0; i < teachers.length; ++i) { ?>
-              <a class="dropdown-item" onclick="select('classroom-teacher', <?= teachers[i] ?>)">
-                <?= teachers[i] ?>
-              </a>
-            <? } ?>
-         </div>
-       </div>
+    <div class="alert alert-danger hidden" id="error">
     </div>
-   <div class=form-group>
-        <div class="dropdown">
-          <button class="form-control dropdown-toggle" type="input" id="classroom-number" data-toggle="dropdown">
-            Номер класса
-          </button>
-          <div class="dropdown-menu">
-            <? for (var i = 0; i < CLASS_NUMBERS.length; ++i) { ?>
-              <a class="dropdown-item" onclick="select('classroom-number', <?= CLASS_NUMBERS[i] ?>)">
-                <?= CLASS_NUMBERS[i] ?>
-              </a>
-            <? } ?>
-         </div>
-       </div>
+    <form>
+        <div class=form-group>
+            <div class="dropdown">
+                <button class="form-control dropdown-toggle" type="input" id="classroom-teacher" data-toggle="dropdown">
+                    Преподаватель
+                </button>
+                <? var teachers = new TeachersService().getNames(); ?>
+                <div class="dropdown-menu">
+                    <? for (var i = 0; i < teachers.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="select('classroom-teacher', <?= teachers[i] ?>)">
+                        <?= teachers[i] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+        <div class=form-group>
+            <div class="dropdown">
+                <button class="form-control dropdown-toggle" type="input" id="classroom-number" data-toggle="dropdown">
+                    Номер класса
+                </button>
+                <div class="dropdown-menu">
+                    <? for (var i = 0; i < CLASS_NUMBERS.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="select('classroom-number', <?= CLASS_NUMBERS[i] ?>)">
+                        <?= CLASS_NUMBERS[i] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+        <div class=form-group>
+            <div class="dropdown">
+                <button class="form-control dropdown-toggle" type="input" id="classroom-letter" data-toggle="dropdown">
+                    Буква класса
+                </button>
+                <div class="dropdown-menu">
+                    <? for (var i = 0; i < CLASS_LETTERS.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="select('classroom-letter', <?= CLASS_LETTERS[i] ?>)">
+                        <?= CLASS_LETTERS[i] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="buttons">
+        <input class="btn btn-primary" type="button" value="Добавить" onclick="submit()">
     </div>
-   <div class=form-group>
-        <div class="dropdown">
-          <button class="form-control dropdown-toggle" type="input" id="classroom-letter" data-toggle="dropdown">
-            Буква класса
-          </button>
-          <div class="dropdown-menu">
-            <? for (var i = 0; i < CLASS_LETTERS.length; ++i) { ?>
-              <a class="dropdown-item" onclick="select('classroom-letter', <?= CLASS_LETTERS[i] ?>)">
-                <?= CLASS_LETTERS[i] ?>
-              </a>
-            <? } ?>
-         </div>
-       </div>
-    </div>
-</form>
-<div class="buttons">
-   <input class="btn btn-primary" type="button" value="Добавить" onclick="submit()">
-</div>
 </div>
 <?!= include('shared.js.html'); ?>
 <?!= include('ClassroomTeachers.js.html'); ?>

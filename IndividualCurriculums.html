@@ -2,42 +2,44 @@
 <?!= include('IndividualCurriculums.css.html'); ?>
 <?!= include('shared.css.html'); ?>
 <div class="container">
-<div class="alert alert-danger hidden" id="error">
-</div>
-<form>
- <div class="form-group">
- <div class="form-group">
-    <input class="form-control" type="text" id="icurriculums-name" placeholder="ФИО">
- </div>
- <div class="dropdown">
-   <button class="form-control dropdown-toggle" type="input" id="icurriculums-curriculum" data-toggle="dropdown">
-      Учебный план
-   </button>
-   <div class="dropdown-menu">
-       <? for (var i = 0; i < CURRICULUMS.length; ++i) { ?>
-       <a class="dropdown-item" onclick="selectCurriculum(<?= CURRICULUMS[i] ?>)" href="#">
-           <?= CURRICULUMS[i] ?>
-       </a>
-   <? } ?>
-   </div>
- </div>
- </div>
- <div class="form-group">
- <div class="dropdown">
-   <button class="form-control dropdown-toggle" type="input" id="icurriculums-sport" data-toggle="dropdown">
-      Физкультура
-   </button>
-   <div class="dropdown-menu">
-       <? for (var i = 0; i < SPORTS.length; ++i) { ?>
-       <a class="dropdown-item" onclick="select('icurriculums-sport', <?= SPORTS[i] ?>)" href="#">
-           <?= SPORTS[i] ?>
-       </a>
-    <? } ?>
-     </div>
-   </div>
-   </div>
-  </form>
-  <input class="btn btn-primary" type="button" value="Добавить ученика" onclick="submit()">
+    <div class="alert alert-danger hidden" id="error">
+    </div>
+    <form>
+        <div class="form-group">
+            <div class="form-group">
+                <input class="form-control" type="text" id="icurriculums-name" placeholder="ФИО">
+            </div>
+            <div class="dropdown">
+                <button class="form-control dropdown-toggle" type="input" id="icurriculums-curriculum"
+                        data-toggle="dropdown">
+                    Учебный план
+                </button>
+                <div class="dropdown-menu">
+                    <? for (var i = 0; i < CURRICULUMS.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="selectCurriculum(<?= CURRICULUMS[i] ?>)" href="#">
+                        <?= CURRICULUMS[i] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="dropdown">
+                <button class="form-control dropdown-toggle" type="input" id="icurriculums-sport"
+                        data-toggle="dropdown">
+                    Физкультура
+                </button>
+                <div class="dropdown-menu">
+                    <? for (var i = 0; i < SPORTS.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="select('icurriculums-sport', <?= SPORTS[i] ?>)" href="#">
+                        <?= SPORTS[i] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+    </form>
+    <input class="btn btn-primary" type="button" value="Добавить ученика" onclick="submit()">
 </div>
 <?!= include('shared.js.html'); ?>
 <?!= include('IndividualCurriculums.js.html'); ?>
