@@ -18,28 +18,6 @@
      hideError();
      google.script.run.addClassroomTeacher(teacher, letter, number);
   }
-  function selectTeacher(teacher) {
-     document.getElementById('classroom-teacher').innerHTML = teacher;
-  }
-  
-  function selectClassLetter(letter) {
-      document.getElementById('classroom-letter').innerHTML = letter;
-  }
-  
-  function selectClassNumber(number) {
-      document.getElementById('classroom-number').innerHTML = number;
-  }
-  
-  function showError(message) {
-      var element = document.getElementById('error');
-      element.classList.remove('hidden');
-      element.innerHTML = 'Ошибка: ' + message;
-  }
-
-  function hideError() {
-      var element = document.getElementById('error');
-      element.classList.add('hidden');
-  }
 </script>
 
 

@@ -1,0 +1,28 @@
+<script>
+    function submit() {
+        var name = document.getElementById('icurriculums-curriculum').innerHTML;
+        var sport = document.getElementById('icurriculums-sport').innerHTML;
+        var curriculum = document.getElementById('icurriculums-curriculum').innerHTML;
+        if (!sport || sport === 'Физкультура') {
+            showError('Физкультура отсутствует');
+            return;
+        }
+       
+        if (!curriculum || curriculum === 'Учебный план') {
+           showError('Учебный отсутствует');
+           return;
+        }
+        
+        if (!name) {
+           showError('Имя отстутсвует');
+           return;
+        }
+        
+        google.script.run.addICurriculum();
+        hideError();
+    }
+    
+    function selectCurriculum(curriculum) {
+       select('icurriculums-curriculum', curriculum);
+    }
+</script>

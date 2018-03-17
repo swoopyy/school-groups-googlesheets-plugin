@@ -1,4 +1,5 @@
 <?!= include('links.html'); ?>
+<?!= include('shared.css.html'); ?>
 <?!= include('Teachers.css.html'); ?>
 <div class="container">
 <div class="alert alert-danger hidden" id="error">
@@ -17,7 +18,7 @@
           </button>
           <div class="dropdown-menu">
             <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
-              <a class="dropdown-item" onclick="selectDiscipline(<?= DISCIPLINES_LIST[i] ?>)" href="#">
+              <a class="dropdown-item" onclick="select('teacher-discipline', <?= DISCIPLINES_LIST[i] ?>)" href="#">
                 <?= DISCIPLINES_LIST[i] ?>
               </a>
             <? } ?>
@@ -31,7 +32,7 @@
           </button>
           <div class="dropdown-menu">
             <? for (var i = 0; i < MAX_STUDENTS.length; ++i) { ?>
-              <a class="dropdown-item" onclick="selectMaxStudents(<?= MAX_STUDENTS[i] ?>)" href="#">
+              <a class="dropdown-item" onclick="select('teacher-max-students', <?= MAX_STUDENTS[i] ?>)" href="#">
                 <?= MAX_STUDENTS[i] ?>
               </a>
             <? } ?>
@@ -43,4 +44,5 @@
    <input class="btn btn-primary" type="button" value="Добавить" onclick="submit()">
 </div>
 </div>
+<?!= include('shared.js.html'); ?>
 <?!= include('Teachers.js.html'); ?>

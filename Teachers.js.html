@@ -23,22 +23,4 @@
         hideError();
         google.script.run.addTeacher(name, email, discipline, maxStudents);
     }
-    function selectDiscipline(discipline) {
-        document.getElementById('teacher-discipline').innerHTML = discipline;
-    }
-
-    function selectMaxStudents(maxStudents) {
-        document.getElementById('teacher-max-students').innerHTML = maxStudents;
-    }
-
-    function showError(message) {
-        var element = document.getElementById('error');
-        element.classList.remove('hidden');
-        element.innerHTML = 'Ошибка: ' + message;
-    }
-
-    function hideError() {
-        var element = document.getElementById('error');
-        element.classList.add('hidden');
-    }
 </script>

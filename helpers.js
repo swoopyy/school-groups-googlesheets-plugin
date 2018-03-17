@@ -21,6 +21,7 @@ function MainSpreadsheetService() {
   
   this.getData = function(sheetName, key) {
     var url = this.getSpreadsheetUrl(sheetName, key);
+    Logger.log(url);
     var ss = SpreadsheetApp.openByUrl(url);
     return ss.getSheets()[0].getDataRange().getValues();
   }

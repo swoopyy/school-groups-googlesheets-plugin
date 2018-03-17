@@ -26,7 +26,6 @@ function sendEmails() {
   var yearRange = getActiveSheetName();
   var mainspreadsheetService = new MainSpreadsheetService();
   var data = mainspreadsheetService.getClassroomTeachersMatrix(yearRange);
-  Logger.log(data);
   for (var i = 0; i < data.length; ++i) {
     var emailAddress = getTeacherEmailFromName(data[i][0], yearRange);
     var subject = "ИУПы на " + yearRange + " учебный год";
