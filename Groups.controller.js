@@ -1,9 +1,6 @@
 function groupsMenu(newlyCreated) {
     if (newlyCreated) {
-        // Doc was opened for the very first time
+        nameSheetAsCurrentYear();
     }
 }
 
-function createGroups() {
-    // main functionality
-}

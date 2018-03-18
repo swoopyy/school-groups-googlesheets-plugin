@@ -10,7 +10,7 @@ function ClassroomTeachersService(yearRange) {
         var matrix = this.getMatrix();
         var out = [];
         for (var i = 0; i < matrix.length; ++i) {
-            out.push(ClassroomTeacher.fromRow(matrix[i]));
+            out.push(ClassroomTeacher.fromRow(matrix[i], i));
         }
         return out;
     };

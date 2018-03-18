@@ -79,7 +79,12 @@ function createMainSpreadsheetSheet(fromYear, toYear) {
     ss.insertSheet(fromYear + '-' + toYear);
 }
 function createGroups() {
-  groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers);
+    var ts = new TeachersService();
+    var ics = new IndividualCurriculumsService();
+    Logger.log(ts.serialize());
+    Logger.log(ts.serializeLessons());
+    Logger.log(ics.serialize());
+ // groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers);
 }
 
 function createDocsForActiveSheet() {

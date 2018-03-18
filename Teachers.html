@@ -39,6 +39,34 @@
          </div>
        </div>
     </div>
+    <div class=form-group>
+        <div class="dropdown">
+            <button class="form-control dropdown-toggle" type="input" id="teacher-min-groups" data-toggle="dropdown">
+                Мин. кол-во групп
+            </button>
+            <div class="dropdown-menu">
+                <? for (var i = 0; i < 15; ++i) { ?>
+                <a class="dropdown-item" onclick="select('teacher-min-groups', <?= i ?>)" href="#">
+                    <?= i ?>
+                </a>
+                <? } ?>
+            </div>
+        </div>
+    </div>
+    <div class=form-group>
+        <div class="dropdown">
+            <button class="form-control dropdown-toggle" type="input" id="teacher-max-groups" data-toggle="dropdown">
+                Макс. кол-во групп
+            </button>
+            <div class="dropdown-menu">
+                <? for (var i = 0; i < 15; ++i) { ?>
+                <a class="dropdown-item" onclick="select('teacher-max-groups', <?= i ?>)" href="#">
+                    <?= i ?>
+                </a>
+                <? } ?>
+            </div>
+        </div>
+    </div>
 </form>
 <div class="buttons">
    <input class="btn btn-primary" type="button" value="Добавить" onclick="submit()">

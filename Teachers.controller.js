@@ -1,11 +1,6 @@
 function teachersMenu(newlyCreated) {
     if (newlyCreated) {
-        var ss = SpreadsheetApp.getActiveSpreadsheet();
-        if (newlyCreated) {
-            var currentYear = new Date().getFullYear();
-            var nextYear = currentYear + 1;
-            ss.renameActiveSheet(currentYear + "-" + nextYear);
-        }
+        nameSheetAsCurrentYear();
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
@@ -22,6 +17,6 @@ function addTeacherMenu() {
 }
 
 
-function addTeacher(name, email, discipline, maxStudents) {
-    new TeachersService().add(name, email, discipline, maxStudents)
+function addTeacher(name, email, discipline, maxStudents, minGroups, maxGroups) {
+    new TeachersService().add(name, email, discipline, maxStudents, minGroups, maxGroups)
 }

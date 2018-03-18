@@ -1,9 +1,6 @@
 function individualCurriculumsMenu(newlyCreated) {
     if (newlyCreated) {
-        var ss = SpreadsheetApp.getActiveSpreadsheet();
-        var currentYear = new Date().getFullYear();
-        var nextYear = currentYear + 1;
-        ss.renameActiveSheet(currentYear + "-" + nextYear);
+        nameSheetAsCurrentYear();
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
@@ -19,9 +16,8 @@ function addICurriculumMenu() {
         .showSidebar(html);
 }
 
-function addICurriculum(name, number, letter, curriculum, sport, teachers) {
-    Logger.log(teachers);
-    new IndividualCurriculumsService().add(name, number, letter, curriculum, sport, teachers);
+function addICurriculum(name, number, letter, curriculum, sport, preferences) {
+    new IndividualCurriculumsService().add(name, number, letter, curriculum, sport, preferences);
 }
 
 

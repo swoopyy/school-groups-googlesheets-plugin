@@ -11,7 +11,7 @@ function TeachersService(yearRange) {
         var matrix = this.getMatrix();
         var out = [];
         for (var i = 0; i < matrix.length; ++i) {
-            out.push(Teacher.fromRow(matrix[i]));
+            out.push(Teacher.fromRow(matrix[i], i));
         }
         return out;
     };
@@ -24,8 +24,30 @@ function TeachersService(yearRange) {
         return this.ms.getSpreadsheetUrl(this.key);
     };
 
-    this.add = function(name, email, discipline, maxStudents) {
-        this.getSheet().appendRow([name, email, discipline, maxStudents]);
+    this.add = function(name, email, discipline, maxStudents, minGroups, maxGroups) {
+        this.getSheet().appendRow([name, email, discipline, maxStudents, minGroups, maxGroups]);
+    };
+
+    this.getByName = function(name) {
+        var teachers = this.getData();
+        for(var i = 0; i < teachers.length; ++i) {
+            if (teachers[i].name === name) {
+                return teachers[i];
+            }
+        }
+        Logger.log("not found");
+        Logger.log(name);
+    };
+
+    this.getTeachersByDiscipline = function(discipline) {
+        var out = [];
+        var teachers = this.getData();
+        for(var i = 0; i < teachers.length; ++i) {
+            if (teachers[i].discipline === discipline) {
+                out.push(teachers[i]);
+            }
+        }
+        return out;
     };
 
     this.getNames = function() {
@@ -56,4 +78,39 @@ function TeachersService(yearRange) {
         }
         return names;
     };
+
+    this.serialize = function() {
+        var out = [];
+        var data = this.getData();
+        for (var i = 0; i < data.length; ++i) {
+            out.push({
+                maxGroups: data[i].maxGroups,
+                teacherId: i,
+                teacherName: data[i].name,
+                minGroups: data[i].minGroups
+            })
+        }
+        return out;
+    };
+
+    this.serializeLessons = function() {
+        var out = [];
+        for (var i = 0; i < DISCIPLINES_LIST.length; ++i) {
+            var obj = {
+                teacherIds: [],
+                lessonName: DISCIPLINES_LIST[i],
+                lessonId: i
+            };
+            var teachers = this.getTeachersByDiscipline(DISCIPLINES_LIST[i]);
+            if (teachers.length !== 0) {
+                obj.groupMaxPupils = teachers[0].maxStudents;
+                obj.groupMinPupils = 0;
+                for (var j = 0; j < teachers.length; ++j) {
+                    obj.teacherIds.push(teachers[j].rowId);
+                }
+                out.push(obj);
+            }
+        }
+        return out;
+    }
 }

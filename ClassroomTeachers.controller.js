@@ -1,11 +1,6 @@
 function classroomTeachersMenu(newlyCreated) {
     if (newlyCreated) {
-        var ss = SpreadsheetApp.getActiveSpreadsheet();
-        if (newlyCreated) {
-            var currentYear = new Date().getFullYear();
-            var nextYear = currentYear + 1;
-            ss.renameActiveSheet(currentYear + "-" + nextYear);
-        }
+        nameSheetAsCurrentYear();
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
