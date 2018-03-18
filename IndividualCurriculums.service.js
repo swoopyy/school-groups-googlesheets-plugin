@@ -23,8 +23,8 @@ function IndividualCurriculumsService(yearRange) {
         return this.ms.getSpreadsheetUrl(this.key);
     };
 
-    this.add = function (name, curriculum, sport, teachers) {
-        var arr = [name, curriculum, sport];
+    this.add = function (name, number, letter, curriculum, sport, teachers) {
+        var arr = [name, number, letter, curriculum, sport];
         for (var i = 0; i < DISCIPLINES_LIST.length; ++i) {
             arr.push(teachers[i][1]);
         }

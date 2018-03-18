@@ -8,7 +8,6 @@ function individualCurriculumsMenu(newlyCreated) {
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
         .addItem("Добавить ИУП", "addICurriculumMenu")
-        .addItem("Отправить email-ы", "sendEmails")
         .addToUi();
 }
 
@@ -20,9 +19,9 @@ function addICurriculumMenu() {
         .showSidebar(html);
 }
 
-function addICurriculum(name, curriculum, sport, teachers) {
+function addICurriculum(name, number, letter, curriculum, sport, teachers) {
     Logger.log(teachers);
-    new IndividualCurriculumsService().add(name, curriculum, sport, teachers);
+    new IndividualCurriculumsService().add(name, number, letter, curriculum, sport, teachers);
 }
 
 
