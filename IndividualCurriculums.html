@@ -38,6 +38,28 @@
                 </div>
             </div>
         </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Выбор учителей</div>
+        <div class="panel-body">
+        <? var ts = new TeachersService(); ?>
+        <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
+            <div class="form-group">
+                <button class="form-control dropdown-toggle" type="input" id="ic-discipline-<?= DISCIPLINES_LIST[i] ?>"
+                        data-toggle="dropdown">
+                    <?= DISCIPLINES_LIST[i] ?>
+                </button>
+                <div class="dropdown-menu">
+                    <? var names = ts.getNamesByDiscipline(DISCIPLINES_LIST[i]);  ?>
+                    <? for (var j = 0; j < names.length; ++j) { ?>
+                    <a class="dropdown-item" onclick="select('ic-discipline-<?= DISCIPLINES_LIST[i] ?>', <?= names[j] ?>)" href="#">
+                        <?= names[j] ?>
+                    </a>
+                    <? } ?>
+                </div>
+            </div>
+        <? } ?>
+        </div>
+        </div>
     </form>
     <input class="btn btn-primary" type="button" value="Добавить ученика" onclick="submit()">
 </div>

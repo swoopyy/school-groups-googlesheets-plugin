@@ -7,13 +7,12 @@ function individualCurriculumsMenu(newlyCreated) {
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
-        .addItem("Добавить ИУП", "addICurriculum")
+        .addItem("Добавить ИУП", "addICurriculumMenu")
         .addItem("Отправить email-ы", "sendEmails")
         .addToUi();
 }
 
-function addICurriculum() {
-    getTeachersBySubject();
+function addICurriculumMenu() {
     var html = HtmlService.createTemplateFromFile('IndividualCurriculums')
         .evaluate()
         .setWidth(400);
@@ -21,21 +20,10 @@ function addICurriculum() {
         .showSidebar(html);
 }
 
-
-function getTeachersBySubject(subject) {
-    var yearRange = getActiveSheetName();
-    var mainspreadsheetService = new MainSpreadsheetService();
-    var data = mainspreadsheetService.getTeachersMatrix(yearRange);
-    var teachers = [];
-    for (var i = 0; i < data.length; ++i) {
-        if (data[i][2] === subject) {
-            teachers.push(data[i][2]);
-        }
-    }
-    return teachers;
+function addICurriculum(name, curriculum, sport, teachers) {
+    Logger.log(teachers);
+    new IndividualCurriculumsService().add(name, curriculum, sport, teachers);
 }
-
-
 
 
 

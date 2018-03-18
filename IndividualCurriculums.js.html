@@ -1,14 +1,14 @@
 <script>
     function submit() {
-        var name = document.getElementById('icurriculums-curriculum').innerHTML;
+        var name = document.getElementById('icurriculums-name').innerHTML;
         var sport = document.getElementById('icurriculums-sport').innerHTML;
         var curriculum = document.getElementById('icurriculums-curriculum').innerHTML;
-        if (!sport || sport === 'Физкультура') {
+        if (!sport || sport.indexOf('Физкультура') !== -1) {
             showError('Физкультура отсутствует');
             return;
         }
 
-        if (!curriculum || curriculum === 'Учебный план') {
+        if (!curriculum || curriculum.indexOf('Учебный план') !== -1) {
             showError('Учебный отсутствует');
             return;
         }
@@ -17,9 +17,21 @@
             showError('Имя отстутсвует');
             return;
         }
-
-        google.script.run.addICurriculum();
-        hideError();
+        
+        google.script.run.withSuccessHandler(function(disciplines) {
+            var teachers = [];
+            for (var i = 0; i < disciplines.length; ++i) {
+                var dp = disciplines[i];
+                var val = document.getElementById('ic-discipline-' + dp).innerHTML.trim();
+                if (val !== disciplines[i]) {
+                   teachers.push([dp, val]);
+                } else {
+                  teachers.push([dp, '']);
+                }
+            }
+            google.script.run.addICurriculum(name, curriculum, sport, teachers);
+            hideError();
+        }).getDisciplines();
     }
 
     function selectCurriculum(curriculum) {

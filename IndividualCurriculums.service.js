@@ -23,7 +23,11 @@ function IndividualCurriculumsService(yearRange) {
         return this.ms.getSpreadsheetUrl(this.key);
     };
 
-    this.add = function (teacher, letter, number) {
-        this.getSheet().appendRow([teacher, number, letter]);
+    this.add = function (name, curriculum, sport, teachers) {
+        var arr = [name, curriculum, sport];
+        for (var i = 0; i < DISCIPLINES_LIST.length; ++i) {
+            arr.push(teachers[i][1]);
+        }
+        this.getSheet().appendRow(arr);
     };
 }

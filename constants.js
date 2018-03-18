@@ -62,3 +62,7 @@ var CLASS_LETTERS = [
   'Ю', 
   'Я'
 ];
+
+function getDisciplines() {
+    return DISCIPLINES_LIST;
+}
