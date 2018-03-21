@@ -1,0 +1,60 @@
+<script>
+    function submit() {
+        console.log('SUBMITTING');
+        var name = document.getElementById('icurriculums-name').value;
+        var sport = document.getElementById('icurriculums-sport').innerHTML;
+        var curriculum = document.getElementById('icurriculums-curriculum').innerHTML;
+        var letter = document.getElementById('ic-classroom-letter').innerHTML;
+        var number = document.getElementById('ic-classroom-number').innerHTML;
+        console.log('EVERYTHING', name, sport, curriculum, letter, number);
+        if (!sport || sport.indexOf('Физкультура') !== -1) {
+            showError('Физкультура отсутствует');
+            return;
+        }
+        console.log('HERE');
+
+        if (!curriculum || curriculum.indexOf('Учебный план') !== -1) {
+            showError('Учебный отсутствует');
+            return;
+        }
+        console.log('HERE1');
+
+        if (number.indexOf('Номер класса') !== -1) {
+            showError('Выберите номер класса');
+            return;
+        }
+        console.log('HERE2');
+
+        if (letter.indexOf('Буква класса') !== -1) {
+            showError('Выберите букву класса');
+            return;
+        }
+        console.log('HERE3');
+
+        if (!name) {
+            showError('Имя отстутсвует');
+            return;
+        }
+        
+        console.log('RUNNING SCRIPT');
+        google.script.run.withSuccessHandler(function(disciplines) {
+            var preferences = [];
+            for (var i = 0; i < disciplines.length; ++i) {
+                var dp = disciplines[i];
+                var val = document.getElementById('ic-discipline-' + dp).innerHTML.trim();
+                if (val !== disciplines[i]) {
+                   preferences.push([dp, val]);
+                } else {
+                  preferences.push([dp, '']);
+                }
+            }
+            console.log(name, number, letter, curriculum, sport, preferences);
+            google.script.run.addICurriculum(name, number, letter, curriculum, sport, preferences);
+            hideError();
+        }).getDisciplines();
+    }
+
+    function selectCurriculum(curriculum) {
+        select('icurriculums-curriculum', curriculum);
+    }
+</script>

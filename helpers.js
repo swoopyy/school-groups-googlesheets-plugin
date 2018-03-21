@@ -3,46 +3,20 @@ function include(filename) {
         .getContent();
 }
 
+function nameSheet() {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var name = ss.getName().split('_')[1];
+    ss.renameActiveSheet(name);
+}
 
-function MainSpreadsheetService() {
-  var userProperties = PropertiesService.getUserProperties();
-  this.mainSpreadsheetUrl = userProperties.getProperty("main_spreadsheet");
-  this.mainSpreadsheet = SpreadsheetApp.openByUrl(this.mainSpreadsheetUrl);
-  
-  this.getSpreadsheetUrl = function(sheetName, key) {
-    var sheet = this.mainSpreadsheet.getSheetByName(sheetName);
-    var values = sheet.getDataRange().getValues();
-    for (var i = 0; i < values.length; ++i) {
-      if (values[i][0] === key) {
-        return values[i][1];
-      }
+function numberToR1C1(number) {
+    var s = '';
+    var digit;
+    var n = number;
+    while (n > 0) {
+        digit = (n - 1) % 26;
+        s = String.fromCharCode(65 + digit) + s;
+        n = parseInt((n - digit) / 26);
     }
-  };
-  
-  this.getData = function(sheetName, key) {
-    var url = this.getSpreadsheetUrl(sheetName, key);
-    var ss = SpreadsheetApp.openByUrl(url);
-    return ss.getSheets()[0].getDataRange().getValues();
-  }
-  
-  this.getTeachersMatrix = function(sheetName) {
-    return this.getData(sheetName, "Преподаватели");
-  }
-  
-  this.getClassroomTeachersMatrix = function(sheetName) {
-    return this.getData(sheetName, "Классные руководители");
-  }
-  
-  this.getСurriculumsMatrix = function(sheetName) {
-    return this.getData(sheetName, "Учебные планы");
-  }
-  
-  this.getIndividualСurriculumsMatrix = function(sheetName) {
-    return this.getData(sheetName, "ИУПы");
-  }
-  
-  this.getIndividualCurriculumsUrl = function(yearRange) {
-    return this.getSpreadsheetUrl(yearRange, "ИУПы");
-  }
-  
+    return s;
 }

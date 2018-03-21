@@ -1,9 +1,11 @@
 <script>
     function submit() {
-        var name = document.getElementById('teacher-name').value;
-        var email = document.getElementById('teacher-email').value;
-        var discipline = document.getElementById('teacher-discipline').innerHTML;
-        var maxStudents = document.getElementById('teacher-max-students').innerHTML;
+        var name = document.getElementById('teacher-name').value.trim();
+        var email = document.getElementById('teacher-email').value.trim();
+        var discipline = document.getElementById('teacher-discipline').innerHTML.trim();
+        var maxStudents = document.getElementById('teacher-max-students').innerHTML.trim();
+        var minGroups = document.getElementById('teacher-min-groups').innerHTML.trim();
+        var maxGroups = document.getElementById('teacher-max-groups').innerHTML.trim();
         if (!name) {
             showError('ФИО отсутствует');
             return;
@@ -20,25 +22,15 @@
             showError('Макс. кол-во учеников не выбрано');
             return;
         }
+        if (minGroups.indexOf('Мин. кол-во групп') !== -1) {
+            showError('Мин. кол-во групп не выбрано');
+            return;
+        }
+        if (maxGroups.indexOf('Макс. кол-во групп') !== -1) {
+            showError('Макс. кол-во групп не выбрано');
+            return;
+        }
         hideError();
-        google.script.run.addTeacher(name, email, discipline, maxStudents);
-    }
-    function selectDiscipline(discipline) {
-        document.getElementById('teacher-discipline').innerHTML = discipline;
-    }
-
-    function selectMaxStudents(maxStudents) {
-        document.getElementById('teacher-max-students').innerHTML = maxStudents;
-    }
-
-    function showError(message) {
-        var element = document.getElementById('error');
-        element.classList.remove('hidden');
-        element.innerHTML = 'Ошибка: ' + message;
-    }
-
-    function hideError() {
-        var element = document.getElementById('error');
-        element.classList.add('hidden');
+        google.script.run.addTeacher(name, email, discipline, maxStudents, minGroups, maxGroups);
     }
 </script>
