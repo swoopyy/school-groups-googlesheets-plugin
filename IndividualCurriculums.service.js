@@ -43,8 +43,7 @@ function IndividualCurriculumsService(yearRange) {
                 major: ic[i].curriculum
             };
             var prefs = ic[i].preferences;
-            Logger.log("preferences");
-            Logger.log(prefs);
+
             for (var j = 0; j < prefs.length; ++j) {
                 if (!!prefs[i][1]) {
                     obj.preferences.push({

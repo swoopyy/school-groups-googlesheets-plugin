@@ -22,6 +22,21 @@ function MainSpreadsheetService(yearRange) {
         var url = this.getSpreadsheetUrl(key);
         var ss = SpreadsheetApp.openByUrl(url);
         return ss.getSheets()[0];
-    }
+    };
 
+    this.getSheetByName = function(key, name) {
+        var url = this.getSpreadsheetUrl(key);
+        var ss = SpreadsheetApp.openByUrl(url);
+        return ss.getSheetByName(name);
+    };
+
+    this.createSheetIfNotExist = function(key, name) {
+        var url = this.getSpreadsheetUrl(key);
+        var ss = SpreadsheetApp.openByUrl(url);
+        if (!ss.getSheetByName(name)) {
+           return ss.insertSheet(name);
+        } else {
+            ss.getSheetByName(name)
+        }
+    }
 }

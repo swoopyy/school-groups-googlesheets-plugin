@@ -1,6 +1,6 @@
 function teachersMenu(newlyCreated) {
     if (newlyCreated) {
-        nameSheetAsCurrentYear();
+        nameSheet();
     }
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")

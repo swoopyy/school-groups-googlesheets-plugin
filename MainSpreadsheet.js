@@ -50,7 +50,6 @@ function onInstall(e) {
 }
 
 function mainSpreadsheetMenu(newlyCreated) {
-    Logger.log("main spreasdheet");
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     if (newlyCreated) {
         var currentYear = new Date().getFullYear();
@@ -81,10 +80,12 @@ function createMainSpreadsheetSheet(fromYear, toYear) {
 function createGroups() {
     var ts = new TeachersService();
     var ics = new IndividualCurriculumsService();
-    Logger.log(ts.serialize());
-    Logger.log(ts.serializeLessons());
-    Logger.log(ics.serialize());
- // groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers);
+    var gs = new GroupsService();
+
+    // Logger.log(ts.serialize());
+    // Logger.log(ts.serializeLessons());
+    // Logger.log(ics.serialize());
+   gs.write(groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers));
 }
 
 function createDocsForActiveSheet() {

@@ -35,8 +35,6 @@ function TeachersService(yearRange) {
                 return teachers[i];
             }
         }
-        Logger.log("not found");
-        Logger.log(name);
     };
 
     this.getTeachersByDiscipline = function(discipline) {
