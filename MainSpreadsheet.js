@@ -29,7 +29,7 @@ function newlyCreatedDoc() {
         documentProperties.setProperty("classroom_teachers", "true");
         classroomTeachersMenu(true);
     } else if (name.indexOf("Учебные планы") !== -1) {
-        documentProperties.setProperty("curriculum", "true");
+        documentProperties.setProperty("curriculums", "true");
         curriculumsMenu(true);
     } else if (name.indexOf("Подгруппы") !== -1) {
         documentProperties.setProperty("groups", "true");

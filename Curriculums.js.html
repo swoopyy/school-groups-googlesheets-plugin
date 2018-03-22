@@ -1,0 +1,154 @@
+<script>
+    var DISCIPLINES_INFO = [];
+    var TEACHERS = [];
+    
+    function submit(){   
+       
+        var profile = document.getElementById("profile").value;
+        var classNumber = document.getElementById('class-number').innerHTML;
+        
+        if(!profile){
+            showError('Введите профиль');
+            return;
+        }
+        if(classNumber.indexOf('Номер класса') !== -1){
+            showError('Введите номер класса');
+            return;
+        }
+        if(DISCIPLINES_INFO.length === 0){
+            showError('Выберите предметы');
+            return;
+        }
+        
+        hideError();
+        google.script.run.addCurriculum(profile, classNumber, DISCIPLINES_INFO);
+    }
+    
+    function setValue(id, value) {
+        document.getElementById(id).innerHTML = value;
+    }
+    
+    function addDiscipline() {        
+        var disciplinesList   = document.getElementById('disciplines');
+        
+             
+        var name = document.getElementById('discipline').innerHTML;
+        if(DISCIPLINES_INFO.find(function(item){ return item.name === name }) !== undefined){
+            showModalError("Этот предмет уже добавлен");
+        }
+        
+        var hours = document.getElementById('hours').innerHTML;
+        var mode = document.getElementById('discipline-mode').innerHTML;
+        var status = document.getElementById('discipline-status').innerHTML;
+              
+//        if (name === 'Предмет') {
+//            showError('Введите название дисциплины');
+//            return;
+//        }
+//        if (hours === 'Количество часов в неделю') {
+//            showError('Введите часы');
+//            return;
+//        }
+//        if (mode === 'Уровень изучения') {
+//            showError('Выберите уровень изучения');
+//            return;
+//        }
+//        if (TEACHERS.length === 0) {
+//            showError('Выберите преподавателей');
+//            return;
+//        }
+        
+        
+        DISCIPLINES_INFO.push({
+            name: name,
+            hours: hours,
+            mode: mode,
+            status: status,
+            teachers: TEACHERS
+        });
+           
+        var disciplineElement = document.createElement('li');
+        disciplineElement.id = name;
+        disciplineElement.innerHTML = name;
+        disciplineElement.className = "list-group-item";
+        disciplineElement.addEventListener('click', function (e) {
+            deleteElement(e.target.id, DISCIPLINES_INFO);
+        });
+        
+        disciplinesList.appendChild(disciplineElement);  
+        
+        
+        hideError();
+        hideModalError();
+        TEACHERS = [];
+        
+        document.getElementById('discipline').innerHTML = "Предмет";
+        document.getElementById('hours').innerHTML = 'Количество часов в неделю';
+        document.getElementById('discipline-mode').innerHTML = 'Выберите уровень изучения';
+        document.getElementById('discipline-status').innerHTML = 'Статус предмета';
+        document.getElementById('teachers').innerHTML = "";
+    }
+    
+    function addTeacher(name){
+        if(TEACHERS.find(function(item){ return item === name }) !== undefined ) {
+            showModalError('Этот преподаватель уже добавлен');
+           
+            return;
+        }
+        
+        var teachersList = document.getElementById('teachers');
+        
+        var teacherElement = document.createElement('li');
+        teacherElement.id = name;
+        teacherElement.innerHTML = name;
+        teacherElement.className = "list-group-item";
+        teacherElement.addEventListener('click', function (e) {
+            deleteElement(e.target.id, TEACHERS);
+        });
+        
+        TEACHERS.push(name);
+        console.log("TEACHERS", TEACHERS);
+        
+        teachersList.appendChild(teacherElement);  
+        
+        hideModalError();
+    }
+    
+    function deleteElement(id, data){
+        
+        console.log("data", data);
+        
+        for(var i in data){
+           
+           if(data[i] === id || data[i].name === id) {
+               var element = document.getElementById(id);
+               var parentElement = document.getElementById(element.parentNode.id);
+               
+               parentElement.removeChild(element);
+               
+               data.splice(i,1);
+               break;
+           }
+           
+       }
+       
+       console.log("TEACHERS after delete", TEACHERS);
+       console.log("INFO after delete", DISCIPLINES_INFO);
+       
+    }
+    
+    function showModalError(message){
+        var element = document.getElementById('errorModal');
+        element.classList.remove('hidden');
+        element.innerHTML = 'Ошибка: ' + message;    
+    }
+    
+    function hideModalError(){
+        var element = document.getElementById('errorModal');
+        element.classList.add('hidden');
+    }
+   
+    
+</script>
+
+
