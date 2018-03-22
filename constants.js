@@ -72,3 +72,4 @@ var CLASS_LETTERS = [
 function getDisciplines() {
     return DISCIPLINES_LIST;
 }
+

@@ -10,7 +10,7 @@ function IndividualCurriculumsService(yearRange) {
         var matrix = this.getMatrix();
         var out = [];
         for (var i = 0; i < matrix.length; ++i) {
-            out.push(IndividualCurriculum.fromRow(matrix[i]));
+            out.push(IndividualCurriculum.fromRow(matrix[i], i));
         }
         return out;
     };
@@ -30,4 +30,31 @@ function IndividualCurriculumsService(yearRange) {
         }
         this.getSheet().appendRow(arr);
     };
+
+    this.serialize = function() {
+        out = [];
+        var ic = this.getData();
+        var ts = new TeachersService();
+        for (var i = 0; i < ic.length; ++i) {
+            var obj = {
+                preferences: [],
+                name: ic[i].name,
+                gradeName: ic[i].number + ic[i].letter,
+                major: ic[i].curriculum
+            };
+            var prefs = ic[i].preferences;
+            Logger.log("preferences");
+            Logger.log(prefs);
+            for (var j = 0; j < prefs.length; ++j) {
+                if (!!prefs[i][1]) {
+                    obj.preferences.push({
+                        teacherId: ts.getByName(prefs[i][1]).rowId,
+                        lessonId: DISCIPLINES_LIST.indexOf(prefs[i][0])
+                    });
+                }
+            }
+            out.push(obj);
+        }
+        return out;
+    }
 }

@@ -38,18 +38,18 @@
         
         console.log('RUNNING SCRIPT');
         google.script.run.withSuccessHandler(function(disciplines) {
-            var teachers = [];
+            var preferences = [];
             for (var i = 0; i < disciplines.length; ++i) {
                 var dp = disciplines[i];
                 var val = document.getElementById('ic-discipline-' + dp).innerHTML.trim();
                 if (val !== disciplines[i]) {
-                   teachers.push([dp, val]);
+                   preferences.push([dp, val]);
                 } else {
-                  teachers.push([dp, '']);
+                  preferences.push([dp, '']);
                 }
             }
-            console.log(name, number, letter, curriculum, sport, teachers);
-            google.script.run.addICurriculum(name, number, letter, curriculum, sport, teachers);
+            console.log(name, number, letter, curriculum, sport, preferences);
+            google.script.run.addICurriculum(name, number, letter, curriculum, sport, preferences);
             hideError();
         }).getDisciplines();
     }
