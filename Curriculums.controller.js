@@ -19,7 +19,6 @@ function addCurriculumMenu() {
 
 function addCurriculum(profile, classNumber, disciplinesInfo){
    
-  
     new CurriculumsService().add(profile, classNumber, disciplinesInfo);
   new CurriculumsService().getData();
   

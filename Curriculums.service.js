@@ -8,7 +8,6 @@ function CurriculumsService(yearRange) {
     };
 
     this.getData = function() {
-      console.log("get data epta");
         var matrix = this.getMatrix();
         var data = [];
         
@@ -81,11 +80,35 @@ function CurriculumsService(yearRange) {
       
        console.log('DATA', data[11]);
        console.log("DISCIPLINES", data[11].disciplines);
-          
-          
-      
         
         return data;
+    };
+
+    this.getObligatory = function() {
+        var matrix = this.getMatrix();
+        var out = {};
+        var curr;
+        for(var i = 0; i < matrix.length; ++i) {
+            if (matrix[i][0]) {
+                curr = matrix[i][0];
+                out[curr] = [];
+            }
+            if (matrix[i][5] === "Обязательный") {
+                out[curr].push(getDisciplineId(matrix[i][2]));
+            }
+        }
+        return out;
+    };
+
+    this.getCurriculums = function() {
+        var matrix = this.getMatrix();
+        var out = [];
+        for(var i = 0; i < matrix.length; ++i) {
+            if (matrix[i][0]) {
+                out.push(matrix[i][0]);
+            }
+        }
+        return out;
     };
 
     this.getSheet = function()  {

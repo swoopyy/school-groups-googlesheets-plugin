@@ -73,3 +73,10 @@ function getDisciplines() {
     return DISCIPLINES_LIST;
 }
 
+function getDisciplineId(disp) {
+    for(var i = 0; i < DISCIPLINES_LIST.length; ++i) {
+        if (DISCIPLINES_LIST[i] === disp) {
+            return i;
+        }
+    }
+}
