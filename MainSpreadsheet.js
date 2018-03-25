@@ -29,7 +29,7 @@ function newlyCreatedDoc() {
         documentProperties.setProperty("classroom_teachers", "true");
         classroomTeachersMenu(true);
     } else if (name.indexOf("Учебные планы") !== -1) {
-        documentProperties.setProperty("curriculum", "true");
+        documentProperties.setProperty("curriculums", "true");
         curriculumsMenu(true);
     } else if (name.indexOf("Подгруппы") !== -1) {
         documentProperties.setProperty("groups", "true");
@@ -82,11 +82,14 @@ function createGroups() {
     var ts = new TeachersService();
     var ics = new IndividualCurriculumsService();
     var gs = new GroupsService();
+    var cs = new CurriculumsService();
 
-    // Logger.log(ts.serialize());
-    // Logger.log(ts.serializeLessons());
-    // Logger.log(ics.serialize());
-   gs.write(groups(sample1_pupils,sample1_lessons,sample1_major_lessons,sample1_teachers));
+    var teachers = ts.serialize();
+    var major_lessons = cs.getObligatory();
+    var lessons = ts.serializeLessons();
+    var pupils = ics.serialize();
+
+    gs.write(groups(pupils, lessons, major_lessons, teachers));
 }
 
 function createDocsForActiveSheet() {
