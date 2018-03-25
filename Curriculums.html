@@ -5,9 +5,25 @@
 <div class="alert alert-danger hidden" id="error">
 </div>
 <form>
-    <div class="form-group">
-        <input class="form-control" type="text" id="profile" placeholder="Профиль">
+     <a class="btn-primary" onclick="handleClick()">
+         Кнопка
+     </a>
+    
+     <div class=form-group>
+        <div class="dropdown">
+            <button class="form-control dropdown-toggle" type="input" id="curriculum-name" data-toggle="dropdown">
+              Профиль
+            </button>
+            <div class="dropdown-menu">
+              <? for (var i = 0; i < CURRICULUMS.length; ++i) { ?>
+                <a class="dropdown-item" onclick="setValue('curriculum-name', <?= CURRICULUMS[i] ?>)">
+                  <?= CURRICULUMS[i] ?>
+                </a>
+              <? } ?>
+            </div>
+        </div>
     </div>
+    
     <div class=form-group>
         <div class="dropdown">
             <button class="form-control dropdown-toggle" type="input" id="class-number" data-toggle="dropdown">

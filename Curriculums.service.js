@@ -87,16 +87,27 @@ function CurriculumsService(yearRange) {
     this.getObligatory = function() {
         var matrix = this.getMatrix();
         var out = {};
-        var curr;
+        
         for(var i = 0; i < matrix.length; ++i) {
-            if (matrix[i][0]) {
-                curr = matrix[i][0];
-                out[curr] = [];
+            var number;
+            var curr;
+            
+            if (matrix[i][0]) {  
+              number = matrix[i][1];
+              curr = matrix[i][0];
+              
+              out[number] = {};
+              out[number][curr] = [];
+
             }
+          
             if (matrix[i][5] === "Обязательный") {
-                out[curr].push(getDisciplineId(matrix[i][2]));
+                out[number][curr].push(getDisciplineId(matrix[i][2]));
             }
+           
         }
+         
+        console.log("Обязательный", out);
         return out;
     };
 

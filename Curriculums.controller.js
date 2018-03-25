@@ -17,11 +17,13 @@ function addCurriculumMenu() {
         .showSidebar(html);
 }
 
+function handleClick(){
+  new CurriculumsService().getObligatory();
+}
+
 function addCurriculum(profile, classNumber, disciplinesInfo){
    
     new CurriculumsService().add(profile, classNumber, disciplinesInfo);
-  new CurriculumsService().getData();
-  
-    
+     
     
 }
