@@ -96,9 +96,13 @@ function CurriculumsService(yearRange) {
               number = matrix[i][1];
               curr = matrix[i][0];
               
-              out[number] = {};
-              out[number][curr] = [];
-
+              if(out[number] == undefined){
+                out[number] = {};                
+              }
+              if(out[number][curr] == undefined) {
+                out[number][curr] = [];
+              }
+              
             }
           
             if (matrix[i][5] === "Обязательный") {
