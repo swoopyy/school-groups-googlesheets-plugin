@@ -1,7 +1,16 @@
 function teachersMenu(newlyCreated) {
     if (newlyCreated) {
-        nameSheet();
+        nameSheet();    
     }
+  
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getActiveSheet();
+    
+    if(sheet.getLastRow() == 0){
+        sheet.appendRow(["ФИО", "E-mail", "Предмет", "Макс.учеников в группе", "Мин.кол-во групп", "Макс.кол-во групп"]);
+        sheet.getRange('A1:F1').setFontWeight('bold');
+    }
+  
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
         .addItem("Добавить преподавателя", "addTeacherMenu")

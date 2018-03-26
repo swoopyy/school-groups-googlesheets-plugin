@@ -3,6 +3,14 @@ function curriculumsMenu(newlyCreated) {
         nameSheet();
     }
     
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getActiveSheet();
+    
+    if(sheet.getLastRow() == 0){
+        sheet.appendRow(["Профиль", "Класс", "Предмет", "Кол-во. часов в неделю", "Уровень изучения", "Статус предмета", "Преподаватели"]);
+        sheet.getRange('A1:G1').setFontWeight('bold');
+    }
+  
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
       .addItem("Добавить учебный план", "addCurriculumMenu")
