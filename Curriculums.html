@@ -11,10 +11,11 @@
             <button class="form-control dropdown-toggle" type="input" id="curriculum-name" data-toggle="dropdown">
               Профиль
             </button>
+            <? var curriculums = new CurriculumsNamesService().getData(); ?>
             <div class="dropdown-menu">
-              <? for (var i = 0; i < CURRICULUMS.length; ++i) { ?>
-                <a class="dropdown-item" onclick="setValue('curriculum-name', <?= CURRICULUMS[i] ?>)">
-                  <?= CURRICULUMS[i] ?>
+              <? for (var i = 0; i < curriculums.length; ++i) { ?>
+                <a class="dropdown-item" onclick="setValue('curriculum-name', <?= curriculums[i] ?>)">
+                  <?= curriculums[i] ?>
                 </a>
               <? } ?>
             </div>
@@ -67,10 +68,11 @@
                                 <button class="form-control dropdown-toggle" type="input" id="discipline" data-toggle="dropdown">
                                     Предмет
                                 </button>
+                                <? var disciplines = new DisciplinesNamesService().getData(); ?>
                                 <div class="dropdown-menu">
-                                  <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
-                                      <a class="dropdown-item" onclick="setValue('discipline', <?= DISCIPLINES_LIST[i] ?>)" href="#">
-                                          <?= DISCIPLINES_LIST[i] ?>
+                                  <? for (var i = 0; i < disciplines.length; ++i) { ?>
+                                      <a class="dropdown-item" onclick="setValue('discipline', <?= disciplines[i] ?>)" href="#">
+                                          <?= disciplines[i] ?>
                                       </a>
                                   <? } ?>
                                 </div>

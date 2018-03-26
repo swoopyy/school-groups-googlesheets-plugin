@@ -16,10 +16,11 @@
           <button class="form-control dropdown-toggle" type="input" id="teacher-discipline" data-toggle="dropdown">
             Предмет
           </button>
+          <? var disciplines = new DisciplinesNamesService().getData(); ?>
           <div class="dropdown-menu">
-            <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
-              <a class="dropdown-item" onclick="select('teacher-discipline', <?= DISCIPLINES_LIST[i] ?>)" href="#">
-                <?= DISCIPLINES_LIST[i] ?>
+            <? for (var i = 0; i < disciplines.length; ++i) { ?>
+              <a class="dropdown-item" onclick="select('teacher-discipline', <?= disciplines[i] ?>)" href="#">
+                <?= disciplines[i] ?>
               </a>
             <? } ?>
          </div>
