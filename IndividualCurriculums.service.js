@@ -25,7 +25,7 @@ function IndividualCurriculumsService(yearRange) {
 
     this.add = function (name, number, letter, curriculum, sport, teachers) {
         var arr = [name, number, letter, curriculum, sport];
-        for (var i = 0; i < DISCIPLINES_LIST.length; ++i) {
+        for (var i = 0; i < getDisciplines().length; ++i) {
             arr.push(teachers[i][1]);
         }
         this.getSheet().appendRow(arr);
@@ -48,7 +48,7 @@ function IndividualCurriculumsService(yearRange) {
                 if (!!prefs[j][1]) {
                     obj.preferences.push({
                         teacherId: ts.getByName(prefs[j][1]).rowId,
-                        lessonId: DISCIPLINES_LIST.indexOf(prefs[j][0])
+                        lessonId: getDisciplines().indexOf(prefs[j][0])
                     });
                 }
             }

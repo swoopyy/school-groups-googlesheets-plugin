@@ -64,8 +64,8 @@ function mainSpreadsheetMenu(newlyCreated) {
       
         ss.insertSheet('Список предметов');
         var sheet = ss.getSheetByName('Список предметов');
-        for(var i in DISCIPLINES_LIST){
-            sheet.appendRow([DISCIPLINES_LIST[i]]);
+        for(var i in getDisciplines()){
+            sheet.appendRow([getDisciplines()[i]]);
         }
     }
     

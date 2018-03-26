@@ -93,13 +93,13 @@ function TeachersService(yearRange) {
 
     this.serializeLessons = function() {
         var out = [];
-        for (var i = 0; i < DISCIPLINES_LIST.length; ++i) {
+        for (var i = 0; i < getDisciplines().length; ++i) {
             var obj = {
                 teacherIds: [],
-                lessonName: DISCIPLINES_LIST[i],
+                lessonName: getDisciplines()[i],
                 lessonId: i
             };
-            var teachers = this.getTeachersByDiscipline(DISCIPLINES_LIST[i]);
+            var teachers = this.getTeachersByDiscipline(getDisciplines()[i]);
             if (teachers.length !== 0) {
                 obj.groupMaxPupils = teachers[0].maxStudents;
                 obj.groupMinPupils = 0;

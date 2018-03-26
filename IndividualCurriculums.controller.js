@@ -7,8 +7,15 @@ function individualCurriculumsMenu(newlyCreated) {
     var sheet = ss.getActiveSheet();
     
     if(sheet.getLastRow() == 0){
-        sheet.appendRow(["ФИО", "Класс", "Буква", "Профиль", "Спорт", "Преподаватели"]);
-        sheet.getRange('A1:F1').setFontWeight('bold');
+        var row = ["ФИО", "Класс", "Буква", "Профиль", "Спорт"];
+        var disciplines = getDisciplines();
+
+        for(var i in disciplines){
+            row.push(disciplines[i]);
+        }
+
+        sheet.appendRow(row);
+        sheet.getRange('A1:AH1').setFontWeight('bold');
     }
   
     var ui = SpreadsheetApp.getUi();
@@ -23,6 +30,10 @@ function addICurriculumMenu() {
         .setWidth(400);
     SpreadsheetApp.getUi()
         .showSidebar(html);
+}
+
+function getDisciplines(){
+    return new DisciplinesNamesService().getData();
 }
 
 function addICurriculum(name, number, letter, curriculum, sport, preferences) {

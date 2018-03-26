@@ -16,7 +16,7 @@ IndividualCurriculum.fromRow = function (row, rowId) {
         sport = row[4];
     var preferences = [];
     for (var i = 5; i < row.length; ++i) {
-        preferences.push([DISCIPLINES_LIST[i - 5], row[i]]);
+        preferences.push([getDisciplines()[i - 5], row[i]]);
     }
     return new IndividualCurriculum(name, number, letter, curriculum, sport, preferences, rowId);
 };

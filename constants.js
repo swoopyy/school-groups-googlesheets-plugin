@@ -77,13 +77,10 @@ var CLASS_LETTERS = [
   'Я'
 ];
 
-function getDisciplines() {
-    return DISCIPLINES_LIST;
-}
 
 function getDisciplineId(disp) {
-    for(var i = 0; i < DISCIPLINES_LIST.length; ++i) {
-        if (DISCIPLINES_LIST[i] === disp) {
+    for(var i = 0; i < getDisciplines().length; ++i) {
+        if (getDisciplines()[i] === disp) {
             return i;
         }
     }
