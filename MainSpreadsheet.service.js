@@ -15,7 +15,8 @@ function MainSpreadsheetService(yearRange) {
     };
 
     this.getData = function(key) {
-        return this.getFirstSheet(key).getDataRange().getValues();
+        var data = this.getFirstSheet(key).getDataRange().getValues();
+        return data.slice(1);
     };
 
     this.getFirstSheet = function(key) {

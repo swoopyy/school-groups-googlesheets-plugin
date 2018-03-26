@@ -1,4 +1,5 @@
 function ClassroomTeachersService(yearRange) {
+    this.yearRange = yearRange || SpreadsheetApp.getActiveSheet().getName();
     this.ms = new MainSpreadsheetService(yearRange);
     this.key = "Классные руководители";
 
