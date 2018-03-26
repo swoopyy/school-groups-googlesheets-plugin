@@ -45,10 +45,10 @@ function IndividualCurriculumsService(yearRange) {
             var prefs = ic[i].preferences;
 
             for (var j = 0; j < prefs.length; ++j) {
-                if (!!prefs[i][1]) {
+                if (!!prefs[j][1]) {
                     obj.preferences.push({
-                        teacherId: ts.getByName(prefs[i][1]).rowId,
-                        lessonId: DISCIPLINES_LIST.indexOf(prefs[i][0])
+                        teacherId: ts.getByName(prefs[j][1]).rowId,
+                        lessonId: DISCIPLINES_LIST.indexOf(prefs[j][0])
                     });
                 }
             }
