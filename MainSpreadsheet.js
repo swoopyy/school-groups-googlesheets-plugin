@@ -43,6 +43,7 @@ function newlyCreatedDoc() {
         userProperties.setProperty("main_spreadsheet", ss.getUrl()); //url for main spreadsheat is stored in userProps
         mainSpreadsheetMenu(true);
     }
+  
 }
 
 function onInstall(e) {
@@ -54,7 +55,20 @@ function mainSpreadsheetMenu(newlyCreated) {
     if (newlyCreated) {
         var currentYear = new Date().getFullYear();
         ss.renameActiveSheet(currentYear + "-" + (currentYear + 1));
+        
+        ss.insertSheet('Названия учебных планов');
+        var sheet = ss.getSheetByName('Названия учебных планов');
+        for(var i in CURRICULUMS){
+            sheet.appendRow([CURRICULUMS[i]]);
+        }
+      
+        ss.insertSheet('Список предметов');
+        var sheet = ss.getSheetByName('Список предметов');
+        for(var i in DISCIPLINES_LIST){
+            sheet.appendRow([DISCIPLINES_LIST[i]]);
+        }
     }
+    
     var ui = SpreadsheetApp.getUi();
     ui.createMenu("Плагин ВШЭ")
         .addItem("Создать таблицу", "createSheetMenuItem")
@@ -103,6 +117,8 @@ function createDocsForSheet(sheet) {
     var curriculumsDoc = openOrCreateDoc("Учебные планы", sheet);
     var individualCurriculumsDoc = openOrCreateDoc("ИУПы", sheet);
     var groupsDoc = openOrCreateDoc("Подгруппы", sheet);
+  
+  
     return [teachersDoc, classroomTeachersDoc, curriculumsDoc, individualCurriculumsDoc, groupsDoc];
 }
 

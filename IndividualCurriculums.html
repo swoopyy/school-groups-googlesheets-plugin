@@ -14,10 +14,11 @@
                         data-toggle="dropdown">
                     Учебный план
                 </button>
+                <? var curriculums = new CurriculumsNamesService().getData(); ?>
                 <div class="dropdown-menu">
-                    <? for (var i = 0; i < CURRICULUMS.length; ++i) { ?>
-                    <a class="dropdown-item" onclick="selectCurriculum(<?= CURRICULUMS[i] ?>)" href="#">
-                        <?= CURRICULUMS[i] ?>
+                    <? for (var i = 0; i < curriculums.length; ++i) { ?>
+                    <a class="dropdown-item" onclick="selectCurriculum(<?= curriculums[i] ?>)" href="#">
+                        <?= curriculums[i] ?>
                     </a>
                     <? } ?>
                 </div>
@@ -70,16 +71,17 @@
         <div class="panel-heading">Выбор учителей</div>
         <div class="panel-body">
         <? var ts = new TeachersService(); ?>
-        <? for (var i = 0; i < DISCIPLINES_LIST.length; ++i) { ?>
+        <? var disciplines = new DisciplinesNamesService().getData(); ?>
+        <? for (var i = 0; i < disciplines.length; ++i) { ?>
             <div class="form-group">
-                <button class="form-control dropdown-toggle" type="input" id="ic-discipline-<?= DISCIPLINES_LIST[i] ?>"
+                <button class="form-control dropdown-toggle" type="input" id="ic-discipline-<?= disciplines[i] ?>"
                         data-toggle="dropdown">
-                    <?= DISCIPLINES_LIST[i] ?>
+                    <?= disciplines[i] ?>
                 </button>
                 <div class="dropdown-menu">
-                    <? var names = ts.getNamesByDiscipline(DISCIPLINES_LIST[i]);  ?>
+                    <? var names = ts.getNamesByDiscipline(disciplines[i]);  ?>
                     <? for (var j = 0; j < names.length; ++j) { ?>
-                    <a class="dropdown-item" onclick="select('ic-discipline-<?= DISCIPLINES_LIST[i] ?>', <?= names[j] ?>)" href="#">
+                    <a class="dropdown-item" onclick="select('ic-discipline-<?= disciplines[i] ?>', <?= names[j] ?>)" href="#">
                         <?= names[j] ?>
                     </a>
                     <? } ?>

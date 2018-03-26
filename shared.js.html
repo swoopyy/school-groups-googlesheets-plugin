@@ -13,4 +13,19 @@
         var element = document.getElementById('error');
         element.classList.add('hidden');
     }
+    
+    function getCurriculumsNames(){
+        var ss = SpreadsheetApp.getActiveSpreadsheet();
+        var sheet = ss.getSheetByName('Названия учебных планов');
+       
+        
+        var out = [];
+        
+        
+        for (var i = 0; i < sheet.getLastRow(); i++){
+          out.push(sheet.getValue('A'+i));
+        }
+        
+        return out;
+    }
 </script>
