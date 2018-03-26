@@ -1,122 +1,122 @@
 var sample1_teachers = [
     {
-        "maxGroups": 16,
-        "teacherId": 17,
-        "teacherName": "Mrs. Gail Ore",
-        "minGroups": 3
-    },
-    {
-        "maxGroups": 15,
-        "teacherId": 13,
-        "teacherName": "Mrs. Doris Rhodes",
-        "minGroups": 5
-    },
-    {
-        "maxGroups": 10,
-        "teacherId": 12,
-        "teacherName": "Mrs. Martha Urbanek",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 12,
         "teacherId": 3,
-        "teacherName": "Mrs. Evelyn Foster",
-        "minGroups": 7
-    },
-    {
-        "maxGroups": 11,
-        "teacherId": 14,
-        "teacherName": "Mrs. Mamie Ashby",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 19,
-        "teacherId": 18,
-        "teacherName": "Mrs. Virginia Wilson",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 13,
-        "teacherId": 7,
-        "teacherName": "Mrs. Yvonne Church",
-        "minGroups": 2
-    },
-    {
-        "maxGroups": 15,
-        "teacherId": 4,
-        "teacherName": "Mrs. Mae Murphy",
-        "minGroups": 2
-    },
-    {
-        "maxGroups": 16,
-        "teacherId": 16,
-        "teacherName": "Mrs. Beatrice Klein",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 16,
-        "teacherId": 10,
-        "teacherName": "Mrs. Melody Mieles",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 16,
-        "teacherId": 5,
-        "teacherName": "Mrs. Dana Mcanally",
-        "minGroups": 2
-    },
-    {
-        "maxGroups": 11,
-        "teacherId": 15,
-        "teacherName": "Mrs. Hazel Gioia",
-        "minGroups": 5
-    },
-    {
+        "teacherName": "Белоусова Ю.П.",
         "maxGroups": 14,
-        "teacherId": 20,
-        "teacherName": "Mrs. Esther Cardinale",
-        "minGroups": 7
-    },
-    {
-        "maxGroups": 15,
-        "teacherId": 6,
-        "teacherName": "Mrs. Sarah Duncan",
-        "minGroups": 4
-    },
-    {
-        "maxGroups": 15,
-        "teacherId": 2,
-        "teacherName": "Mrs. Karla Johnson",
         "minGroups": 6
     },
     {
-        "maxGroups": 19,
-        "teacherId": 19,
-        "teacherName": "Mrs. Nicole Graff",
+        "teacherId": 10,
+        "teacherName": "Фокина Р.В.",
+        "maxGroups": 14,
         "minGroups": 2
     },
     {
-        "maxGroups": 14,
         "teacherId": 9,
-        "teacherName": "Mrs. Marilyn Shellhamer",
-        "minGroups": 4
+        "teacherName": "Королёва Ю.Р.",
+        "maxGroups": 10,
+        "minGroups": 2
     },
     {
+        "teacherId": 7,
+        "teacherName": "Кириллова В.С.",
+        "maxGroups": 11,
+        "minGroups": 7
+    },
+    {
+        "teacherId": 1,
+        "teacherName": "Котова Е.К.",
         "maxGroups": 12,
-        "teacherId": 8,
-        "teacherName": "Mrs. Laura Hansen",
+        "minGroups": 2
+    },
+    {
+        "teacherId": 11,
+        "teacherName": "Воробьёва М.Н.",
+        "maxGroups": 16,
         "minGroups": 5
     },
     {
-        "maxGroups": 18,
-        "teacherId": 1,
-        "teacherName": "Mrs. Bernadette Locke",
+        "teacherId": 19,
+        "teacherName": "Александрова Р.Х.",
+        "maxGroups": 16,
+        "minGroups": 3
+    },
+    {
+        "teacherId": 15,
+        "teacherName": "Михеева А.А.",
+        "maxGroups": 15,
         "minGroups": 2
     },
     {
+        "teacherId": 2,
+        "teacherName": "Виноградова Л.Р.",
+        "maxGroups": 12,
+        "minGroups": 2
+    },
+    {
+        "teacherId": 18,
+        "teacherName": "Князева Л.А.",
+        "maxGroups": 18,
+        "minGroups": 4
+    },
+    {
+        "teacherId": 8,
+        "teacherName": "Ситникова Д.С.",
+        "maxGroups": 16,
+        "minGroups": 2
+    },
+    {
+        "teacherId": 6,
+        "teacherName": "Лукина В.В.",
+        "maxGroups": 13,
+        "minGroups": 5
+    },
+    {
+        "teacherId": 5,
+        "teacherName": "Кабанова Е.Р.",
         "maxGroups": 15,
-        "teacherId": 11,
-        "teacherName": "Mrs. Anna Blount",
+        "minGroups": 2
+    },
+    {
+        "teacherId": 16,
+        "teacherName": "Егорова С.С.",
+        "maxGroups": 19,
+        "minGroups": 7
+    },
+    {
+        "teacherId": 12,
+        "teacherName": "Капустина А.А.",
+        "maxGroups": 16,
+        "minGroups": 2
+    },
+    {
+        "teacherId": 4,
+        "teacherName": "Зайцева Е.Л.",
+        "maxGroups": 10,
+        "minGroups": 5
+    },
+    {
+        "teacherId": 17,
+        "teacherName": "Молчанова З.Л.",
+        "maxGroups": 15,
+        "minGroups": 2
+    },
+    {
+        "teacherId": 13,
+        "teacherName": "Ковалёва А.К.",
+        "maxGroups": 18,
         "minGroups": 3
+    },
+    {
+        "teacherId": 20,
+        "teacherName": "Щукина К.А.",
+        "maxGroups": 17,
+        "minGroups": 6
+    },
+    {
+        "teacherId": 14,
+        "teacherName": "Рогова А.П.",
+        "maxGroups": 18,
+        "minGroups": 2
     }
-];
+]
